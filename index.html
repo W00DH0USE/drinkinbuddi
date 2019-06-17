@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Drinkin Buddi</title>
+      <link rel="stylesheet" href="index.css">
+      <link href="https://fonts.googleapis.com/css?family=Swanky+and+Moo+Moo&display=swap" rel="stylesheet">
+      <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <header>
+      <div class="header-content">
+        <div class="row">
+          <div class="banner">
+            <h1 class="logo-text">Drinkin Buddi</h1>
+            <h2 class="tagline">Let's find a drinkin destination.</h2>
+            <form id="input-form">
+              <input type="text" class="search-input" id="js-search-city" placeholder="Enter your city" required>
+              <input type="submit" class="submit-button" value="Go!">
+            </form>
+            <p id="js-error-message" class="error-message">
+            </p>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main class="hidden">
+      <h2 class="results-title">Search Results</h2>
+      <div id="map-container"></div>
+      <section id="results">
+        <ul id="results-list"></ul>
+      </section>
+    </main>
+    <footer class="hidden">
+      <div class="row">
+        <div class="footer-copywrite">
+          <p>Copywrite © 2019 by Drinkin Buddi. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBaLtHgjJMiePXZAvIRaAPNoRUkLbjS-qY&callback=initMap"
+      async defer></script>
+    <script src="index.js"></script>
+  </body>
+</html>

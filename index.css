@@ -1,0 +1,292 @@
+/* ========================================================================== */
+/*   BASIC SETUP                                                              */
+/* ========================================================================== */
+
+
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+}
+  
+html,
+body {
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    background-color: #000000;
+    color: #555;
+    font-size: 20px;
+    text-align: center;
+}
+
+.hidden {
+    display: none;
+}
+
+/* TEXT COLOR THEME */
+.logo-text, 
+.search-input, 
+.submit-button:hover, .result-website-link:hover, 
+.result-title,
+.results-title {
+    color: #bf84ff;
+}
+
+  
+
+/* ========================================================================== */
+/*   HEADER                                                                   */
+/* ========================================================================== */
+  
+
+header {
+    background: linear-gradient( to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7) ), url("images/bar-beverage.jpg");
+    background-size: cover;
+    width:100%;
+    background-attachment: scroll;
+    padding: 20px 0;
+    box-shadow: 0 0 10px black;
+    height: 100vh;
+}
+  
+.header-content {
+      position: relative;
+      transform: translate(0px, -50%);
+      top: 50%;
+}
+  
+.content, .banner {
+    width: 100%;
+}
+
+.row {
+    max-width: 1100px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 0 auto;
+}
+
+.logo-text {
+    font-size: 500%;
+    font-family: 'Swanky and Moo Moo', cursive;
+    margin-bottom: 80px;
+}
+  
+.tagline {
+    margin-bottom: 10px;
+    line-height: 40px;
+    color: #fff;
+    text-shadow: 0 0 3px #777777;
+    padding-bottom: 45px;
+    font-size: 300%;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+}
+  
+#input-form {
+    padding: 15px 0;
+}
+  
+.search-input {
+    border: none;
+    border-bottom: 3px solid #fff;
+    padding: 8px 0;
+    font-size: 200%;
+    background: none;
+    width: 70%;
+    position: relative;
+    right: -25px;
+    outline: none;
+}
+  
+.search-input:focus {
+    outline: none;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+    -webkit-text-fill-color: #bf84ff !important;
+}
+  
+.submit-button {
+    border: 3px solid #fff;
+    border-radius: 20px;
+    padding: 8px 13px;
+    color: #fff;
+    font-size: 200%;
+    letter-spacing: 2px;
+    background: rgba(255, 255, 255, 0.25);
+    transition: color 0.25s linear;
+    text-shadow: 0 0 3px #555555;
+    position: relative;
+    left: -25px;
+}
+
+
+/* button:focus {outline:0;} */
+  
+.submit-button:hover, .result-website-link:hover {
+    cursor: pointer;
+}
+  
+.error-message {
+    text-align: center;
+    padding-top: 30px;
+    text-shadow: 0 0 3px #555555;
+    font-size: 150%;
+    font-weight: 300;
+    color: #c10000;
+}
+
+
+/* ========================================================================== */
+/*   RESULTS                                                                  */
+/* ========================================================================== */
+  
+main{
+    padding-top: 30px;
+}
+
+.results-title {
+    font-size: 220%;
+}
+
+li, #map-container {
+    max-width: 990px;
+    margin: 20px auto;
+}
+
+li {
+    border: 1px solid #ddd;
+    box-shadow: 1px 1px 5px #777777;
+    margin-bottom: 20px;
+    background: #fff;
+    list-style: none;
+}
+
+.content{
+    width: 50%;
+}
+
+.results-box {
+    box-shadow: 1px 1px 5px #777777;
+    background: #fff;
+    padding-bottom: 10px;
+}
+
+.result-name {
+    color: #555555;
+    padding: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 200%;
+    font-weight: 300;
+    text-shadow: 1px 1px 1px #eaeaea;
+}
+
+.result-name-style {
+    -webkit-text-stroke: 0.5px;
+    text-decoration: none;
+    border-bottom: 1px solid #efefef;
+    border-top: 1px solid #efefef;
+    padding: 5px 20px;
+    box-shadow: 0 0 15px #eaeaea;
+    display: block;
+}
+
+.result-title {
+    text-shadow: 1px 1px 1px #eeeeee;
+    margin: 20px 0 15px 0;
+    text-transform: uppercase;
+    font-size: 20px;
+}
+
+.result-website {
+    color: #555555;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    text-align: center;
+    margin: 0;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 1px #eeeeee;
+}
+
+.result-website-link {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.25s linear;
+    background-color: transparent;
+    text-shadow: 1px 1px 1px #eeeeee;
+    font-size: 75%;
+    line-height: 25px;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: #efefef;
+    margin: 10px auto;
+    width: 90%;
+}
+
+#map-container {
+    height: 400px;
+}
+
+
+/* ========================================================================== */
+/*   FOOTER                                                                   */
+/* ========================================================================== */
+  
+footer {
+    background-color: #bf84ff;
+    height: 49px;
+    padding: 20px 40px;
+    font-size: 80%;
+}
+
+footer p {
+    color: #fff;
+}
+
+#copyright {
+    float: right;
+    color: #fff;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke: 0.1px;
+    transition: color 0.25s linear, text-shadow 0.25s linear, -webkit-filter 0.25s linear, filter 0.25s linear;
+}
+
+
+/* ========================================================================== */
+/*   MEDIA QUERIES                                                            */
+/* ========================================================================== */
+  
+@media only screen and (max-width: 1024px) {
+
+    li, #map-container {
+        max-width: 990px;
+        margin: 20px;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    
+    html, body {
+    font-size: 18px;
+    }
+
+}
+
+@media only screen and (max-width: 780px) {
+    
+    html, body {
+    font-size: 15px;
+    }
+
+}
