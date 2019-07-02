@@ -30,6 +30,11 @@ Results Page:
 * JavaScript
 * jQuery
 
+### API's
+* Open Brewery DB
+* Google Maps - Geocoding API
+* Google Maps - Maps JavaScript API
+
 ## Demo
 
 - [Live Demo](https://w00dh0use.github.io/drinkinbuddi/)
