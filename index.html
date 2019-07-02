@@ -4,20 +4,21 @@
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <title>Drinkin Buddi</title>
+      <title>Drinkin' Buddi</title>
       <link rel="stylesheet" href="index.css">
       <link href="https://fonts.googleapis.com/css?family=Swanky+and+Moo+Moo&display=swap" rel="stylesheet">
       <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
   </head>
   <body>
-    <header>
+    <header role="banner">
       <div class="header-content">
         <div class="row">
           <div class="banner">
-            <h1 class="logo-text">Drinkin Buddi</h1>
-            <h2 class="tagline">Let's find a drinkin destination.</h2>
-            <form id="input-form">
-              <input type="text" class="search-input" id="js-search-city" placeholder="Enter your city" required>
+            <h1 class="logo-text">Drinkin' Buddi</h1>
+            <h2 class="tagline">Let's find a drinkin' destination.</h2>
+            <form id="input-form" role="form">
+              <input type="text" class="search-input-city" id="js-search-city" aria-describedby="City-tip" placeholder="Enter your city (e.g Los Angeles)" required>
+              <input type="text" class="search-input-state" id="js-search-state" aria-describedby="State-tip" placeholder="Enter your state (e.g California)" required>
               <input type="submit" class="submit-button" value="Go!">
             </form>
             <p id="js-error-message" class="error-message">
@@ -26,17 +27,17 @@
         </div>
       </div>
     </header>
-    <main class="hidden">
+    <main role="main" class="hidden">
       <h2 class="results-title">Search Results</h2>
       <div id="map-container"></div>
       <section id="results">
-        <ul id="results-list"></ul>
+        <ul role="list" id="results-list"></ul>
       </section>
     </main>
-    <footer class="hidden">
+    <footer role="contentinfo" class="hidden">
       <div class="row">
         <div class="footer-copywrite">
-          <p>Copywrite © 2019 by Drinkin Buddi. All rights reserved.</p>
+          <p>Copywrite © 2019 by Drinkin' Buddi. All rights reserved.</p>
         </div>
       </div>
     </footer>

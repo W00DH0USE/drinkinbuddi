@@ -3,18 +3,19 @@
 // https://www.openbrewerydb.org/#documentation
 const searchURL = 'https://api.openbrewerydb.org/breweries?by_city=';
 
-/* The "watchForm" function will be responsible for when users click the "submit" button on the landing page. Once the event listener on the form has been triggered, it passes the value entered by the user to the “getBreweries" function */
+/* Handles when users submit a search */
 function watchForm() {
   $('#input-form').submit(event => {
     event.preventDefault();
     const searchCity = $('#js-search-city').val();
-    getBreweries(searchCity);
+    const searchState = $('#js-search-state').val();
+    getBreweries(searchCity, searchState);
   });
 }
 
-/* The "watchForm" function will take the value passed from the “watchForm" and combine it with the “searchURL" const to create a url to be used to fetch a Json response from the open brewery API. If a valid Json response is fetched, it will pass that response to both the “displayResults" & “renderMap" functions. If an invalid response or no response is fetched, an error will be displayed in the DOM. */
-function getBreweries(city) {
-  const url = searchURL + city;
+/* Handles the submitted search inputs to get API data and call next functions */
+function getBreweries(city, state) {
+  const url = searchURL + city + "&by_state=" + state;
 
   console.log(url);
 
@@ -27,18 +28,20 @@ function getBreweries(city) {
     })
     .then(responseJson => {
       if(!responseJson.length){
-        $('#js-error-message').html("Sorry, we could not find any results for that city");
+        $('#js-error-message').text("Sorry, we could not find any results for that city");
       }
        displayResults(responseJson);
-       renderMap(responseJson);
+       getMapGeometry(responseJson);
     })
     .catch(err => {
       console.log(err.message);
-      $('#js-error-message').text(`Something went wrong! Please try again`);
+      $('#js-error-message').text(`Sorry, we could not find any results! Please try again`);
+      $('main').addClass('hidden');
+      $('footer').addClass('hidden');
     });
 }
 
-/* The "displayResults" function will take the Json passed from the “watchForm" and render the results list in the DOM as well as unhide and scroll to the results section. */
+/* Handles the Json and renders the information in the html */
 function displayResults(responseJson) {
   console.log(responseJson);
   $('#results-list').empty();
@@ -46,7 +49,7 @@ function displayResults(responseJson) {
   for (let i = 0; i < responseJson.length; i++){
     $('#results-list').append(
       `
-        <li>
+        <li role="listitem">
             <div class="results-box">
             <h3 class="result-name"><span class="result-name-style">${responseJson[i].name}</span></h3>
             <p class="result-title">address</p>
@@ -64,16 +67,35 @@ function displayResults(responseJson) {
   $('footer').removeClass('hidden');
   $('html, body').animate({ scrollTop: $('main').offset().top});
   document.getElementById("input-form").reset();
+  $('#js-error-message').text(" ");
 };
 
-/* The "renderMap" function will take the Json passed from the “watchForm" and render the latitude and longitude of each results on the map. */
-function renderMap(responseJson) {
-  console.log("rendering map");
-  let firstResult = responseJson[0];
-  var myLatlng = new google.maps.LatLng(firstResult.latitude, firstResult.longitude);
-  
+/* Handles the Json and fetches the coordinates for the map */
+function getMapGeometry(responseJson) {
+
+  const latLongUrl = "https://maps.googleapis.com/maps/api/geocode/json?address=" + responseJson[0].postal_code + "&key=AIzaSyDeuqPkmVtvA3OPa9gnRtVpoOMb_p1FtoU";
+
+  fetch(latLongUrl)
+     .then(latLongResponse => {
+       if (latLongResponse.ok) {
+         return latLongResponse.json();
+       }
+       throw new Error(latLongResponse.statusText);
+     })
+     .then(latLongResponseJson => {
+      if(!latLongResponseJson.length){
+        renderMap(latLongResponseJson, responseJson);
+      }
+    })
+}
+
+/* Handles the map api the renders the results */
+function renderMap(latLongResponseJson, responseJson) {
+
+  var myLatlng = new google.maps.LatLng(latLongResponseJson.results[0].geometry.location.lat, latLongResponseJson.results[0].geometry.location.lng);
+
   var mapOptions = {
-    zoom: 11,
+    zoom: 9,
     center: myLatlng
   }
 
