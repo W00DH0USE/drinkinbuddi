@@ -88,20 +88,33 @@ header {
 #input-form {
     padding: 15px 0;
 }
-  
-.search-input {
+
+.search-input-city,
+.search-input-state {
     border: none;
     border-bottom: 3px solid #fff;
     padding: 8px 0;
-    font-size: 200%;
+    font-size: 150%;
     background: none;
-    width: 70%;
     position: relative;
-    right: -25px;
     outline: none;
+    color: #bf84ff;
+}
+
+.search-input-state {
+    width: 70%;
+    right: -25px;
+    top: 2px;
+}
+
+.search-input-city {
+    width: 73%;
+    right: 10px;
+    top: 3px;
 }
   
-.search-input:focus {
+.search-input-city:focus,
+.search-input-state:focus {
     outline: none;
 }
 
